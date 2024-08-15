@@ -1,0 +1,146 @@
+@use "../utils/mixin" as m;
+
+.footer {
+    margin-top: 110px;
+    padding: 90px 0;
+    color: var(--text-semilight);
+
+    &__container {        
+        display: flex;
+        flex-direction: column;
+        gap: 123px;
+    }
+
+    &__top,
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        gap: 48px;
+    }
+
+    &__nav {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 665px;
+        width: 100%;
+        gap: 32px;
+        font-size: 15px;
+        line-height: normal;
+    }
+
+    &__nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__nav-link {
+        transition: color 0.3s ease;
+
+        @include m.hover {
+            &:hover {
+                color: var(--text-light);
+            }
+        }
+    }
+
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 23px;
+    }
+
+    &__contacts-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__contacts-item {
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    &__contacts-link {
+        transition: color 0.3s ease;
+
+        @include m.hover {
+            &:hover {
+                color: var(--text-light);
+            }
+        }
+    }
+
+    &__socials {
+        display: flex;
+        gap: 17px;
+        flex-wrap: wrap;
+    }
+
+    &__socials-item {
+        width: 45px;
+        aspect-ratio: 1;
+    }
+
+    &__socials-icon {
+        fill: var(--icon-semilight);
+        transition: fill 0.3s ease;
+
+        @include m.hover {
+            &:hover {
+                fill: var(--icon-light);
+            }
+        }
+    }
+
+    &__design-link {
+        transition: color 0.3s ease;
+
+        @include m.hover {
+            &:hover {
+                color: var(--text-light);
+            }
+        }
+    }
+}
+
+@include m.tablet {
+    .footer {
+        margin-top: var(--section-offset);
+        padding: 48px 0;
+
+        &__top {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &__nav {
+            max-width: unset;
+        }
+
+        &__contacts {
+            text-align: center;
+        }
+
+        &__container {
+            gap: 48px;
+        }
+    }
+}
+
+@include m.tablet-s {
+    .footer {
+        padding: 0 0 24px;
+        &__nav {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        &__bottom {
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+    }
+}

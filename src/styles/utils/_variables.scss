@@ -1,0 +1,29 @@
+@use "mixin" as m;
+
+:root {
+   --bg-primary: #ffffff;
+   --bg-opacity: rgba(255, 255, 255, 0.8);
+
+   --text-primary: rgba(5, 5, 5, 0.98);
+
+   --icon-color: #000000;
+   --icon-color-hover: #000000;
+   --icon-light: #FFFFFF;
+
+   --input-bg: rgba(88, 88, 88, 0.30);
+   --input-text: #FFFFFF;
+   --input-placeholder: #FFFFFF;
+
+   --submit-bg: rgba(255, 255, 255, 1);
+
+   --br-m: 55px;
+   --br-s: 6px;
+
+}
+
+@include m.tablet {
+}
+
+@include m.mobile {
+   
+}

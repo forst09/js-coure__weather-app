@@ -1,0 +1,73 @@
+@use "../utils/mixin" as m;
+
+.form {
+
+    &__wrapper {
+        display: flex;
+        position: relative;
+    }
+
+    &__submit-wrapper {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+	&__search-input {
+        width: 100%;
+        padding: 17px 92px 17px 39px;
+        background-color: var(--input-bg);
+        border: unset;
+        color: var(--input-text);
+        font-family: "Poppins", sans-serif;
+        font-size: 30px;
+        font-weight: 400;
+        border-radius: var(--br-m);
+
+        &::placeholder {
+            color: var(--input-placeholder);
+            font-family: "Poppins", sans-serif;
+            font-size: 30px;
+            font-weight: 400;
+            line-height: 1.15em;
+        }
+    }
+
+    &__submit-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: var(--submit-bg);
+
+        &::after {
+            content: '';
+            width: 30px;
+            aspect-ratio: 1;
+            mask-image: url("/icons/search.svg");
+            mask-repeat: no-repeat;
+            mask-size: cover;
+            mask-position: center;
+            background-color: var(--icon-color);
+            transition: background-color 0.3s ease;
+        }
+
+        @include m.hover {
+            &:hover {
+
+                &::after {
+                    background-color: var(--bg-accent);
+                }
+            }
+        }
+    }
+}
+
+@include m.mobile {
+    .form {
+       
+    }
+}

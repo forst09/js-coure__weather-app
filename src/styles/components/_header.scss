@@ -1,0 +1,120 @@
+@use "../utils/mixin" as m;
+
+.header {
+    position: absolute;
+    padding: 44px 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    color: var(--text-light);
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+        gap: 41px;
+    }
+
+    &__socials {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    &__socials-item {
+        width: 34px;
+        aspect-ratio: 1;
+
+        @include m.hover {
+            &:hover {
+                .header__socials-icon {
+                    fill: var(--icon-hover);
+                }
+            }
+        }
+    }
+
+    &__socials-icon {
+        fill: var(--icon-light);
+        transition: fill 0.3s ease;
+    }
+
+    &__about {
+        display: flex;
+        gap: 10px;
+        align-items: flex-end;
+    }
+
+    &__name {
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: -1.8px;
+        line-height: 1.2em;
+    }
+
+    &__specialization {
+        font-size: 14px;
+        line-height: 1.92em;
+        letter-spacing: 5.6px;
+        text-transform: uppercase;
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: 29px;
+    }
+}
+
+@include m.laptop {
+    .header {
+        padding: 20px 0;
+
+        &__container {
+            position: relative;
+        }
+
+        &__about {
+            flex-direction: column;
+            gap: 4px;
+            align-items: flex-start;
+        }
+
+        &__socials {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: calc(100% - 251px - 77px - 40px);
+        }
+    }
+}
+
+@include m.tablet {
+    .header {
+        &__socials {
+            display: none;
+        }
+    }
+}
+
+@include m.tablet-s {
+    .header {
+        &__name {
+            font-size: 20px;
+        }
+
+        &__specialization {
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+
+        &__right {
+            gap: 12px;
+        }
+    }
+}

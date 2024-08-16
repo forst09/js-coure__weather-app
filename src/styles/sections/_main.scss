@@ -21,9 +21,14 @@
         background-color: var(--bg-opacity);
         padding: 53px 70px;
         min-height: 583px;
-        min-width: 760px;
+        max-width: 760px;
+        width: 100%;
         border-radius: var(--br-m);
         font-weight: 500;
+
+        &--message {
+            min-height: 357px;
+        }
     }
 
     &__title {
@@ -38,6 +43,8 @@
     }
 
     &__descr {
+        --icon-src: "url(/icons/sun.svg)";
+
         margin-top: 8px;
         display: inline-flex;
         align-items: center;
@@ -47,26 +54,40 @@
             content: '';
             width: 35px;
             aspect-ratio: 1;
-            mask-size: cover;
-            mask-repeat: no-repeat;
-            mask-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             background-color: var(--icon-light);
+            background-image: (var(--icon-src));
+            border-radius: 50%;
         }
 
-        &--cloudy {
-            &::before {
-                mask-image: url("/icons/clouds.svg");
-            }
-        }
+        // &--cloudy {
+        //     &::before {
+        //         mask-image: url(var(--icon-src));
+        //     }
+        // }
 
-        &--sunny {
-            &::before {
-                mask-image: url("/icons/sun.svg");
-            }
-        }
+        // &--sunny {
+        //     &::before {
+        //         mask-image: url("/icons/sun.svg");
+        //     }
+        // }
     }
 
     &__humidity {
         margin-top: 8px;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        &--message {
+            margin-top: 95px;
+            text-align: center;
+            font-weight: 600;
+            gap: 24px;
+        }
     }
 }

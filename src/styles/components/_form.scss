@@ -32,6 +32,11 @@
             font-weight: 400;
             line-height: 1.15em;
         }
+
+        &::-webkit-search-cancel-button {
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
     }
 
     &__submit-label {
@@ -59,7 +64,7 @@
             &:hover {
 
                 &::after {
-                    background-color: var(--bg-accent);
+                    background-color: var(--icon-hover);
                 }
             }
         }

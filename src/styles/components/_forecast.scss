@@ -1,0 +1,25 @@
+.forecast {
+    margin-top: 56px;
+    display: flex;
+    gap: 24px;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__item-hour {
+        opacity: 0.6;
+    }
+
+    &__item-img {
+        width: 60px;
+        height: auto;
+    }
+
+    &__item-temp {
+        font-weight: 600;
+    }
+}

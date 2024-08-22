@@ -1,52 +1,43 @@
-export default function getForecast(mainWindow, lastUpdatedEpoch, lastUpdated, forecastArray, localTime) {
-    let forecast;
+import Swiper from "swiper";
+import { Navigation } from 'swiper/modules';
+
+import buildForecastCards from "./buildForecastCard";
+
+export default function getForecast(mainWindow, forecastArray, localTime) {
+    let forecast, forecastSlider;
 
     if (document.querySelector('.forecast')) {
         forecast = document.querySelector('.forecast');
-        forecast.innerHTML = '';
+        forecast.querySelector('.forecast__slider-wrapper').innerHTML = '';
     }
     else {
-        forecast = document.createElement('ul');
+        forecast = document.createElement('div');
         forecast.classList.add('forecast');
+        forecast.innerHTML = `
+            <div class="swiper forecast__slider">
+                <div class="swiper-wrapper forecast__slider-wrapper"></div>
+            </div>
+            <div class="swiper-button-prev forecast__btn forecast__btn--prev"></div>
+            <div class="swiper-button-next forecast__btn forecast__btn--next"></div>
+        `;
         mainWindow.append(forecast);
     }
 
-    forecastArray.forEach(item => {
-        if (item.time >= localTime) {
-            console.log(item)
-        }
-    })
-
-    const hours = forecastArray.filter(item => item.time_epoch >= lastUpdatedEpoch);
-
-    console.log(forecastArray, hours);
+    const hours = forecastArray.filter(item => item.time_epoch - localTime > -3540);
 
     if (hours.length > 0) {
         hours.forEach(hour => {
-            const forecastItem = document.createElement('li');
-            forecastItem.classList.add('forecast__item');
-            //  <span class="forecast__item-hour">${new Date(hour.time_epoch * 1000).getUTCHours()}:00</span>
-            forecastItem.innerHTML = `
-                <span class="forecast__item-hour">${new Date(hour.time).getHours()}:00</span>
-                <div class="forecast__item-img img">
-                    <img src="${hour.condition.icon}"
-                     alt="forecats-icon"
-                     class="img__img">
-                </div>
-                <span class="forecast__item-temp">${Math.round(hour.temp_c)} &deg;C</span>
-            `;
-            forecast.append(forecastItem);
+            buildForecastCards(forecast.querySelector('.forecast__slider-wrapper'), hour);
+        });
+
+        forecastSlider = new Swiper(forecast.querySelector('.forecast__slider'), {
+            spaceBetween: 28,
+            slidesPerView: 'auto',
+            modules: [Navigation],
+            navigation: {
+                prevEl: '.forecast__btn--prev',
+                nextEl: '.forecast__btn--next'
+            }
         })
     }
-    //     <ul class="forecast">
-    //     <li class="forecast__item">
-    //         <span class="forecast__item-hour"></span>
-    //         <div class="forecast__item-img img">
-    //             <img src="icon"
-    //                 alt=""
-    //                 class="img__img">
-    //         </div>
-    //         <span class="forecats__item-temp"></span>
-    //     </li>
-    // </ul>
 }

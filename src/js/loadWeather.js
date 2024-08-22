@@ -27,7 +27,7 @@ export default async function loadWeather(searchParam, mainWindow, mainContent) 
             `;
             mainContent.querySelector('.main__descr').style.setProperty('--icon-src', `url("${data.current.condition.icon}")`);
 
-            getForecast(mainWindow, data.current.last_updated_epoch, data.current.last_updated, data.forecast.forecastday[0].hour, data.location.localtime);
+            getForecast(mainWindow, data.forecast.forecastday[0].hour, data.location.localtime_epoch);
         }
         else {
             mainWindow.classList.add('main__window--message');

@@ -1,7 +1,11 @@
+@use "../utils/mixin" as m;
+
 .forecast {
+    position: relative;
     margin-top: 56px;
     display: flex;
     gap: 24px;
+    padding: 0 50px;
 
     &__item {
         display: flex;
@@ -21,5 +25,40 @@
 
     &__item-temp {
         font-weight: 600;
+    }
+
+    &__slider {
+        width: 100%;
+    }
+
+    &__slider-slide {
+        width: fit-content;
+    }
+
+    &__btn {
+        width: 28px;
+        height: auto;
+        aspect-ratio: 1;
+        background-color: var(--arrow-bg);
+        border-radius: 50%;
+        color: var(--icon-light);
+        margin-top: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: background-color 0.3s ease;
+
+        &--prev {
+            left: 0;
+        }
+
+        &--next {
+            right: 0;
+        }
+
+        @include m.hover {
+            &:hover {
+                background-color: var(--arrow-bg-hover);
+            }
+        }
     }
 }

@@ -17,12 +17,24 @@ export default function getGeolocation() {
         }
 
         function handleError(error) {
-            const { message } = error;
+            let errorMessage;
+
+            switch (error.code) {
+                case GeolocationPositionError.TIMEOUT:
+                    errorMessage = error.message;
+                    break
+                case GeolocationPositionError.PERMISSION_DENIED:
+                    errorMessage = "You don't have permission";
+                    break
+                case GeolocationPositionError.POSITION_UNAVAILABLE:
+                    errorMessage = error.message;
+                    break
+            }
+
             mainWindow.classList.add('main__window--message');
             mainContent.classList.add('main__content--message');
             mainContent.innerHTML = `
-                <p>${message}</p>
-                <p>Please try again</p>
+                <p>${errorMessage}</p>
             `;
         }
     }

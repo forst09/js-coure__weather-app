@@ -2,6 +2,10 @@ import getForecast from "./getForecast";
 
 export default async function loadWeather(searchParam, mainWindow, mainContent) {
 
+    if (document.querySelector('.forecast')) {
+        document.querySelector('.forecast').remove();
+    }
+
     mainWindow.classList.add('main__window--message');
     mainContent.classList.add('main__content--message');
 
@@ -15,7 +19,6 @@ export default async function loadWeather(searchParam, mainWindow, mainContent) 
         const data = await response.json();
 
         if (!data.error) {
-            console.log(data);
             mainWindow.classList.remove('main__window--message');
             mainContent.classList.remove('main__content--message');
             mainContent.innerHTML = `
@@ -36,12 +39,16 @@ export default async function loadWeather(searchParam, mainWindow, mainContent) 
                 <p>${data.error.message}</p>
             `;
             mainWindow.querySelector('.forecast').remove();
+
+            throw new Error(data.error.message);
         }
     } catch (e) {
         mainWindow.classList.add('main__window--message');
         mainContent.classList.add('main__content--message');
         mainContent.innerHTML = `
-            <p>${e.message}</p>
+            <p>Something went wrong. Please try again</p>
         `;
+
+        throw new Error(e.message);
     }
 }

@@ -6,24 +6,18 @@ import buildForecastCards from "./buildForecastCard";
 export default function getForecast(mainWindow, forecastArray, localTime) {
     let forecast, forecastSlider;
 
-    if (document.querySelector('.forecast')) {
-        forecast = document.querySelector('.forecast');
-        forecast.querySelector('.forecast__slider-wrapper').innerHTML = '';
-    }
-    else {
-        forecast = document.createElement('div');
-        forecast.classList.add('forecast');
-        forecast.innerHTML = `
+    forecast = document.createElement('div');
+    forecast.classList.add('forecast');
+    forecast.innerHTML = `
             <div class="swiper forecast__slider">
                 <div class="swiper-wrapper forecast__slider-wrapper"></div>
             </div>
             <div class="swiper-button-prev forecast__btn forecast__btn--prev"></div>
             <div class="swiper-button-next forecast__btn forecast__btn--next"></div>
         `;
-        mainWindow.append(forecast);
-    }
+    mainWindow.append(forecast);
 
-    const hours = forecastArray.filter(item => item.time_epoch - localTime > -3540);
+    const hours = forecastArray.filter(item => item.time_epoch - localTime > -3600);
 
     if (hours.length > 0) {
         hours.forEach(hour => {

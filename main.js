@@ -1,7 +1,8 @@
 'use strict';
 
-import getGeolocation from "./src/js/getGeolocation";
-import searchGeolocation from "./src/js/searchGeolocation";
+import showReset from "./src/js/form/showReset";
+import getGeolocation from "./src/js/geolocation/getGeolocation";
+import searchGeolocation from "./src/js/geolocation/searchGeolocation";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -14,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
         getGeolocation(mainWindow, mainContent);
 
         searchGeolocation(mainWindow, mainContent);
+
+        showReset();
 
     }
 

@@ -7,11 +7,14 @@
         position: relative;
     }
 
-    &__submit-wrapper {
+    &__actions {
         position: absolute;
         right: 16px;
         top: 50%;
         transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        gap: 16px;
     }
 
 	&__search-input {
@@ -31,11 +34,42 @@
             font-size: 30px;
             font-weight: 400;
             line-height: 1.15em;
+            opacity: 1;
         }
 
         &::-webkit-search-cancel-button {
             transition: opacity 0.3s ease;
             cursor: pointer;
+            display: none;
+        }
+    }
+
+    &__reset {
+        &.active {
+            .form__reset-label {
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+    }
+
+    &__reset-label {
+        display: block;
+        width: 30px;
+        aspect-ratio: 1;
+        mask-image: url("/icons/reset.svg");
+        mask-size: cover;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        background-color: var(--icon-color);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+
+        @include m.hover {
+            &:hover {
+                background-color: var(--icon-hover);
+            }
         }
     }
 

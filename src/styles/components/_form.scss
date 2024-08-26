@@ -38,8 +38,6 @@
         }
 
         &::-webkit-search-cancel-button {
-            transition: opacity 0.3s ease;
-            cursor: pointer;
             display: none;
         }
     }
@@ -84,11 +82,11 @@
 
         &::after {
             content: '';
-            width: 30px;
+            width: 28px;
             aspect-ratio: 1;
             mask-image: url("/icons/search.svg");
             mask-repeat: no-repeat;
-            mask-size: cover;
+            mask-size: contain;
             mask-position: center;
             background-color: var(--icon-color);
             transition: background-color 0.3s ease;
@@ -105,8 +103,31 @@
     }
 }
 
-@include m.mobile {
+@include m.tablet-s {
     .form {
-       
+        &__search-input {
+            font-size: 18px;
+            padding: 16px 88px 16px 16px;
+
+            &::placeholder {
+                font-size: 18px;
+            }
+        }
+
+        &__actions {
+            gap: 8px;
+        }
+
+        &__reset-label {
+            width: 20px;
+        }
+
+        &__submit-label {
+            width: 32px;
+
+            &::after {
+                width: 18px;
+            }
+        }
     }
 }

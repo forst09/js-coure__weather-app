@@ -62,3 +62,20 @@
         }
     }
 }
+
+@include m.tablet-s {
+    .forecast {
+        margin-top: 32px;
+        padding: 0 24px;
+
+        &__btn {
+            &--next {
+                right: -8px;
+            }
+
+            &--prev {
+                left: -8px;
+            }
+        }
+    }
+}

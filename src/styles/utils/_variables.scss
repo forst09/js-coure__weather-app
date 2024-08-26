@@ -26,7 +26,10 @@
 
 }
 
-@include m.tablet {
+@include m.tablet-s {
+   :root {
+      --br-m: 32px;
+   }
 }
 
 @include m.mobile {

@@ -25,12 +25,17 @@ export default function getForecast(mainWindow, forecastArray, localTime) {
         });
 
         forecastSlider = new Swiper(forecast.querySelector('.forecast__slider'), {
-            spaceBetween: 28,
+            spaceBetween: 10,
             slidesPerView: 'auto',
             modules: [Navigation],
             navigation: {
                 prevEl: '.forecast__btn--prev',
                 nextEl: '.forecast__btn--next'
+            },
+            breakpoints: {
+                768: {
+                    spaceBetween: 28
+                }
             }
         })
     }

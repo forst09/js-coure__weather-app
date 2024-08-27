@@ -14,9 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         getGeolocation(mainWindow, mainContent);
 
-        searchGeolocation(mainWindow, mainContent);
+        const form = document.querySelector('.form');
 
-        showReset();
+        if (form) {
+            searchGeolocation(mainWindow, mainContent, form);
+
+            showReset(form);
+        }
 
     }
 
